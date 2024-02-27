@@ -1,6 +1,13 @@
 const request = require("supertest");
 
 const app = require("../src/app");
+const { pool } = require("../database");
+
+afterAll(async () => {
+  await pool.end();
+});
+
+
 
 describe("GET /api/movies", () => {
   it("should return all movies", async () => {

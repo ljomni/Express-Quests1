@@ -1,6 +1,12 @@
 const request = require("supertest");
-
 const app = require("../src/app");
+const { pool } = require("../../database");
+
+afterAll(async () => {
+  await pool.end();
+});
+
+
 
 describe("GET /api/users", () => {
   it("should return all users", async () => {

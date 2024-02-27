@@ -1,11 +1,12 @@
-const app = require("./src/app");
 
-const port = 5000;
 
-app
-  .listen(port, () => {
-    console.log(`Server is listening on ${port}`);
-  })
-  .on("error", (err) => {
-    console.error("Error:", err.message);
-  });
+require("dotenv").config();
+
+const port = process.env.APP_PORT || 5001;
+
+const app = require("./src/app")
+
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
